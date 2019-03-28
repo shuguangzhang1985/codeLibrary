@@ -1,0 +1,7 @@
+// 针对 对象数组 的某一个属性 去重
+// 利用了findIndex 方法： 只会返回第一个符合条件函数的元素位置的 特性
+// 遍历过程： 第一次 findIndex 查找value==='12'的位置是0； 第二次查找value==='34'的位置为1；
+//（关键）第三次，因为value==='12'是重复的，findIndex查找的结果还是0，和他所在的索引2是不同的，所以被filter过滤掉了
+var a1 = [{value: '12', label: 'aa'}, {value: '34', label: 'bb'}, {value: '12', label: 'aa'}];
+a1.filter((item, index, self) => index === self.findIndex(_item => _item.value === item.value ))
+
